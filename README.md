@@ -2,7 +2,7 @@
 
 Courtesy of Encode Club Bootcamp.
 
-## Lesson 1: Overview/ Maths & Cryptography introduction
+## Lesson 1
 
 ### Overview
 
@@ -12,9 +12,9 @@ But veils of secrecy designed to preserve privacy may also be abused to cover up
 
 ZK gives similar vibes to Machine Learning. More and more people just mention ZK as a magic solution that fixes everything with no context of this current limitation. - 0xMisaka
 
-### Intoductory maths
+## Intoductory maths
 
-Numbers
+### Numbers
 
 Set of integers is denoted by Z. {...-4,-3,-2,-1,0,1,2,3,4..}
 
