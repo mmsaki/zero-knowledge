@@ -48,13 +48,13 @@ To be concidered a group the combination needs certain properties
 3. Identity element
 4. Inverse element
 
-**Closure: **For all a, b in set G, the result of operation a•b, is also in G
+**Closure:** For all a, b in set G, the result of operation a•b, is also in G
 
-**Associativity: ** for all a, b and c in set G, (a•b)•c 
+**Associativity:** for all a, b and c in set G, (a•b)•c 
 
-**Identity element: ** there exists an element e in G such that every element a in G, the equation e•a = a•e=a holds. 
+**Identity element:** there exists an element e in G such that every element a in G, the equation e•a = a•e=a holds. 
 
-**Inverse element: ** for each a in G, there exists an element b in G, denoted a<sup>-1</sup> (or -a if the operation is "+"), such that a•b = b•a = e, where e is the identity element
+**Inverse element:** for each a in G, there exists an element b in G, denoted a<sup>-1</sup> (or -a if the operation is "+"), such that a•b = b•a = e, where e is the identity element
 
 ### Sub Groups
 
