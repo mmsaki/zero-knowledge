@@ -18,7 +18,7 @@ ZK gives similar vibes to Machine Learning. More and more people just mention ZK
 
 Set of integers is denoted by Z. {...-4,-3,-2,-1,0,1,2,3,4..}
 
-Set of Rational numbers denoted by Q. {..1, 3/2, 2, 22/7,...} 
+Set of Rational numbers denoted by Q. {..1, 3/2, 2, 22/7,...}
 
 Set of Real Numbers denoted by R. {2, -4, 613, π, √2,..}
 
@@ -50,9 +50,9 @@ To be concidered a group the combination needs certain properties
 
 **Closure:** For all a, b in set G, the result of operation a•b, is also in G
 
-**Associativity:** for all a, b and c in set G, (a•b)•c 
+**Associativity:** for all a, b and c in set G, (a•b)•c
 
-**Identity element:** there exists an element e in G such that every element a in G, the equation e•a = a•e=a holds. 
+**Identity element:** there exists an element e in G such that every element a in G, the equation e•a = a•e=a holds.
 
 **Inverse element:** for each a in G, there exists an element b in G, denoted a<sup>-1</sup> (or -a if the operation is "+"), such that a•b = b•a = e, where e is the identity element
 
@@ -60,24 +60,84 @@ To be concidered a group the combination needs certain properties
 
 if a subset of the elements in a group also satisfies the group properties, then that is a subgroup of the original group
 
-
 ### Cyclic groups and generators
 
 A finite group can be cyclic. That means it has a generator element. If you start at any point and apply a group operation with the generator as argument a certain number of times, you can go around the whole group and end in the same place.
 
-### Finding and inverse
+### Finding an inverse
+
+fermat's little theorem
 
 a<sup>-1</sup> ≡ a <sup>p-2</sup> (modp)
 
-Let p = 7 and a = 2
+Let p = 7 and a = 2. We can compute the inverse of a as:
+
+a<sup>p-2</sup> = 2<sup>5</sup> = 32 ≡ 4 mod 7
+
+Verify: 2 x 4 ≡ 1 mod 7
+
+### Equivalence classes
+
+since
+
+6 mod 7 = 6
+
+13 mod 7 = 6
+
+20 mod 7 = 6
+
+6, 13, 20 form equivalence classes
+
+more formally
+
+i + kN | k EZ for some i between 0 and N - 1.
+
+Thus if we are trying to solve the equation
+
+x mod 7 = 6
+
+x could be 6, 13, 20 ....
+
+This gives us the basis for a one way function
+
+### Fields
+
+A field is a set of say integers together with two operations called addition and multiplication.
+
+One example of a field is the Real Numbers under addition and multiplication, another is a ser of integers mod a prime number with addition and multiplication.
+
+The field operations are required to satisfy the following field axioms. In these axioms, a, b and c are arbitrary element s of the field F.
+
+1. Associativity of addition and multiplication: a+(b+c) = (a+b)+c and  a•(b•c)=(a•b)•c
+
+2. Commutativity of addition and multiplication: a+b=b+a and a•b=b•a
+
+3. Additive and multiplicative identity. Additve = 0, a + 0 = a, multiplicative = 1, a • 1 = a
+
+4. Additive inverse: For every a in F, there exists an element in F, denoted -a, called the additive invers of a, such that a + (-a) = 0
+
+5. Multicative inverse: For every a ≠ 0 in F, the exists an element in F, denoted by a<sup>-1</sup>, called the multiplicative inverse of a, such that a•a<sup>-1</sup>=1
+
+6. Distributivity of multiplication over addition: a•(b+c) = (a•b)+(a•c)
+
+### Finite fields and generators
+
+### Proving systems
+
+- Instance variables --> which are public
+- Witness variables ---> which are private
 
 
+- Interactive proofs --> Multiple rounds
+- Non-interactive proofs ---> no repeated communications between the prover and the verifier
+- Succint  --->
+- Non Succint --->
+- Proof
+- Proof of Knowledge --->
+- Argument
 
-
-- Homework 1
+- [Homework 1](./homework/homework1.py)
 
 ## Lesson 2: ZKP Theory / Zokrates
 
 - Homework 2
-
-
