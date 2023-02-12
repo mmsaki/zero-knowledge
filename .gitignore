@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cd1c8df16d1cef30f3d237f1760cd3c392f9ff38ec44e33a8e35072127e6e1a6
-size 15
+.DS_Store
+venv/
+out*
+*.key
+witness*
