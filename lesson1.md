@@ -124,15 +124,14 @@ The field operations are required to satisfy the following field axioms. In thes
 
 ### Proving systems
 
-- Instance variables --> which are public
-- Witness variables ---> which are private
+- Instance variables are public
+- Witness variables are private
 
-- Interactive proofs --> Multiple rounds
-- Non-interactive proofs ---> no repeated communications between the prover and the verifier
-- Succint  --->
-- Non Succint --->
-- Proof
-- Proof of Knowledge --->
-- Argument
+- Interactive proofs are multiple rounds
+- Non-interactive proofs have no repeated communications between the prover and the verifier, it has one round that is carried out asynchronously.
+- Succint proofs are necessary only if the medium used fro storing the prrofs is very expensive and/or if we need very short verification times.
+- A proof is stronger and more useful than just proving the statement is true.
+- Proof of Knowledge allows me to prove that i know a secret key, rather than just that it exists.
+- Argument vs Proof. In a prrof, the soundness holds against a computationally unbounded power and in an argument, the soundness only holds agains a polynomially bounded power. Arguments are computationally sound prrofs.
 
 - [Homework 1](./homework/homework1.py)
