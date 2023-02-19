@@ -1,0 +1,3 @@
+[submodule "zk_exercises"]
+	path = zk_exercises
+	url = ./zk_exercises
