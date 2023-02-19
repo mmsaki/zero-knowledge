@@ -1,3 +1,6 @@
 [submodule "zk_exercises"]
 	path = zk_exercises
 	url = https://github.com/mmsaki/zk_homework_4
+[submodule "zokrates"]
+	path = zokrates
+	url = https://github.com/ZoKrates/ZoKrates
