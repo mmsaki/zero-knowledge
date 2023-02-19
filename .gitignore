@@ -30,3 +30,7 @@ witness
 .idea
 .vscode
 *.iml
+
+# other files
+get_hash
+reveal_bit
