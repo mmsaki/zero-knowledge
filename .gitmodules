@@ -1,5 +1,5 @@
 [submodule "src"]
-	path = src/
+	path = src
 	url =https://github.com/mmsaki/cairo/
 
 [submodule "cairo_contracts"]
