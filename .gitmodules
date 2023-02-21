@@ -1,7 +1,6 @@
-[submodule "src"]
-	path = src
-	url =https://github.com/mmsaki/cairo/
-
 [submodule "cairo_contracts"]
  	path = examples/zk_hash_preImage/peggy/lib/cairo_contracts
  	url = https://github.com/OpenZeppelin/cairo-contracts
+[submodule "cairo"]
+	path = cairo
+	url = https://github.com/mmsaki/cairo
