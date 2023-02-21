@@ -1,11 +1,3 @@
-# Performing a trusted setup using a multi-party computation protocol (MPC)
-
-The zkSNARK schemes supported by ZoKrates require a trusted setup. This procedure must be run to generate the proving and verification keys. This procedure generates some data often referred to as 'toxic waste' which can be used to create fake roofs which will be accepted by the verifier. The entity running the trusted setup is trusted to delete this toxic waste. Using an MPC protocol, we can run the trusted setup in a decentralized way, so that this responsibility is shared among all participants of the setup. If at least one participant is honest and deletes their part of the toxic waste, the so false proofs can be created by anyone. This section if the book describes the steps to perform a trusted setup for the Groth16 scheme.
-
-## Pre-requisites
-
-The trusted setup is done in two steps. The first step, also known as "phase 1", does not depend on the program and is called Powers of Tau. The second step is called "phase 2" and is circuit-specific, so it should e done separately for each different program. The Ethereum community runs a phase 1 setup called [Perpetual Powers of Tau](https://github.com/weijiekoh/perpetualpowersoftau).
-
 ## Compiling a circuit
 
 1. Create `circuit.zok` file inside `coordinator/` directory with the following code:
@@ -19,22 +11,26 @@ def main(private field a, private field b) -> {
 2. Compile the program:
 
 ```bash
+cd coordinator
+```
+
+```bash
 zokrates compile -i circuit.zok -o circuit --curve bls12_381
 ```
 
-3. Grab a file which contains the parameters for our circuit with depth 2:
+3. Grab a file which contains the parameters for our circuit with depth 2 and save it in `coordinator/`:
 
 ```bash
 wget https://download.z.cash/downloads/powersoftau/phase1radix2m2
 ```
 
-4. Initialize a phase 2 ceremony:
+4. Initialize a phase 2 ceremony in `coordinator/`:
 
 ```bash
 zokrates mpc init -i circuit -o mpc.params -r ./phase1radix2m2
 ```
 
-5. We conduct the ceremony between 3 participants: Alice, Bob and Charlie, who will run the contributions in sequential order, managed by a coordinator (us). We send `mpc.params` to `alice/`.
+5. We shall conduct the ceremony between 3 participants: Alice, Bob and Charlie, who will run the contributions in sequential order, managed by a coordinator (us). We send `mpc.params` to `alice/`.
 
 ```bash
 mkdir ../alice && mv mpc.params ../alice && cd ../alice
