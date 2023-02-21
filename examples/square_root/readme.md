@@ -1,6 +1,6 @@
 # Hello Zokrates
 
-First create `hello_zokrates.zok` and impletment your program. In this example, we will prove knowledge of the square root a of a number b:
+First create `hello_zokrates.zok` and implement your program. In this example, we will prove knowledge of the square root a of a number b:
 
 ```zokrates
 def main(private field a, field b) {
@@ -10,7 +10,7 @@ def main(private field a, field b) {
 ```
 
 - Keyword `field` is basic type, which is an element of a given prime field
-- Keywork `private` siganls we do not want to reveal this input, but still prove that we know its value
+- Keyword `private` signals we do not want to reveal this input, but still prove that we know its value
 
 Install zokrates:
 

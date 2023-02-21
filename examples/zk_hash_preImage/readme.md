@@ -1,6 +1,6 @@
-# Example: Prooving knowledge of a hash preimage
+# Example: Proving knowledge of a hash preimage
 
-We'll implement an operations that's very common in blockchain usecases: proving knowledgeof a preimage for a given hash digest. In particular, we'll show how Zokrates and the Ethereum blockchain can be used to allow a prover, Peggy, to demonstrate beyond any doubt to a verifier, Victor, that she knows a hash preimage for a digest chosen by Victor, without revealing what that preimage is.
+We'll implement an operations that's very common in blockchain use cases: proving knowledge of a preimage for a given hash digest. In particular, we'll show how Zokrates and the Ethereum blockchain can be used to allow a prover, Peggy, to demonstrate beyond any doubt to a verifier, Victor, that she knows a hash preimage for a digest chosen by Victor, without revealing what that preimage is.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ We get the output:
 
 For now, we have seen that we can compute a hash using ZoKrates.
 
-Let's recall our goal: Peggy wants to prove that she know a preimage for a digest chosen by Victor, without revealing what the preimage is.Let's assum that Victor chooses the digest to be the one we found in our example above.
+Let's recall our goal: Peggy wants to prove that she know a preimage for a digest chosen by Victor, without revealing what the preimage is. Let's assume that Victor chooses the digest to be the one we found in our example above.
 
 To make this work, the two parties have to follow their roles in the protocol:
 
@@ -71,7 +71,7 @@ def main(private a, private field b, private field c, private field d) {
 }
 ```
 
-Note that we now compare the result fo `sha256packed` with hard-coded correct solution defined by Victor. These lines we added are assertions where the veifier will not accept a proof where these constraints were not satisfied. Clearly, this program only returns 1 if all of the computed bits are equal.
+Note that we now compare the result fo `sha256packed` with hard-coded correct solution defined by Victor. These lines we added are assertions where the verifier will not accept a proof where these constraints were not satisfied. Clearly, this program only returns 1 if all of the computed bits are equal.
 
 2. So, after writing the program. Victor is now ready to compile the code.
 
@@ -85,7 +85,7 @@ zokrates compile -i hashexample.zok
 zokrates setup && zokrates export-verifier
 ```
 
-4. The `setup` creates a `verifiaction.key` and a `proving.key` file.
+4. The `setup` creates a `verification.key` and a `proving.key` file.
    - Victor gives the proving key to Peggy. `mkdir peggy && cp victor/proving.key peggy`
    - Victor deploys the `verifier.sol` contract created by `export-verifier`.
 
@@ -104,14 +104,14 @@ Zokrates creates a file for Peggy, `proof.json`, consisting of the three ellipti
 
 In this example we're considering, all inputs are private and there is a single return value of 1, hence Peggy has to define her public input array as follows: `[1]`.
 
-Peggy can then submit he prrof by calling `verifyTx`.
+Peggy can then submit he proof by calling `verifyTx`.
 
 Victor monitor the verification smart contract for the return value of Peggy's transaction. As soon as he observes a transaction from Peggy's public address with a `true` return value, he can be sure that she has a valid pre-image for the hash he set in the smart contract.
 
-## Conlusion
+## Conclusion
 
 Remember that in this example only two parties were involved. This special case makes it easy to deal with the trust assumptions of zkSNARKs: only Victor was interested in verifying the claim by Peggy, hence he can trust his execution of the setup phase.
 
-In general, multiple parties may be interested in verifying the correctness of Peggy's statement. For example, in the zero-knowledge based cryptocurrency Zcash, each node needs to be able to validate the correctness of transactions. In order to generalize the setup phase to these multi-party use-cases a tricky process, commonly referred to as "trusted setup" or "ceremony" needs to be conducted.
+In general, multiple parties may be interested in verifying the correctness of Peggy's statement. For example, in the zero-knowledge based cryptocurrency ZCash, each node needs to be able to validate the correctness of transactions. In order to generalize the setup phase to these multi-party use-cases a tricky process, commonly referred to as "trusted setup" or "ceremony" needs to be conducted.
 
 ZoKrates would welcome ideas to add support for such ceremonies!

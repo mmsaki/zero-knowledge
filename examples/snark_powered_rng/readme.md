@@ -7,12 +7,12 @@ If this is your first time using zokrates make sure you have followed instructio
 Alice and bob want to be on the results of a series of coin tosses. To do so, they need to generate a series of random bits. They proceed as follows:
 
 1. Each of them commits a 512 bit value aka a **preimage**. They publish the hash of the preimage.
-2. Each time they need a new random value, they reveal on bit from their preimage, and agree that the new random value is the result of XORing these two bits, so that neither of them can contral the output.
+2. Each time they need a new random value, they reveal on bit from their preimage, and agree that the new random value is the result of XORing these two bits, so that neither of them can control the output.
 
 Note that we are making the following assumptions:
 
-1. They make sure they do no tuse all 512 bits of their preimage, as the more they reveal, the easier it gets for the other to brute-force their preimage.
-2. They need a way to be convinved that the bit the other revealed is indeed part of their preimage.
+1. They make sure they do not use all 512 bits of their preimage, as the more they reveal, the easier it gets for the other to brute-force their preimage.
+2. They need a way to be convinced that the bit the other revealed is indeed part of their preimage.
 
 In this tutorial you learn how to use ZoKrates and zero knowledge proofs to reveal a single bit from the preimage of a hash value.
 
@@ -31,13 +31,13 @@ def main(u32[16] hashMe) -> u32[8] {
 }
 ```
 
-Compiler program to a form that is usable for zero knowledge proofs. This command writes the binary to `get_hash`. You can see a rext representation, at `get_hash.ztf` created by the inspect command.
+Compiler program to a form that is usable for zero knowledge proofs. This command writes the binary to `get_hash`. You can see a text representation, at `get_hash.ztf` created by the inspect command.
 
 ```bash
 zokrates compile -i get_hash.zok -o get_hash && zokrates inspect -i get_hash
 ```
 
-The input to zokrates program is sixteen 32 bit values, each in decimal. Specifiy those values to get a hash. For example, to calculate the hash of `0x00000000000000010000000200000003000000040000000500000006...` use this command:
+The input to zokrates program is sixteen 32 bit values, each in decimal. Specify those values to get a hash. For example, to calculate the hash of `0x00000000000000010000000200000003000000040000000500000006...` use this command:
 
 ```bash
 zokrates compute-witness --verbose -i get_hash -a 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
@@ -64,7 +64,7 @@ Use this program, `reveal_bit.zok`:
 import "hashes/sha256/512bit" as sha256;
 import "utils/casts/u32_to_bits" as u32_to_bits;
 
-def main(private u32[16] preimage, u32 bitnum) -> (u32[8], bool) {
+def main(private u32[16] preimage, u32 bitNum) -> (u32[8], bool) {
   // convert the preimage to bits
   bool[512] mut preimageBits = [false; 512]
   for u32 i in 0..16 {
@@ -105,7 +105,7 @@ The `reveal_bit.zok` program reveal a bit from the preimage, but who runs it?
 1. If Alice runs the program, she can feed it her secret preimage and receive the correct result. However, when she send the output there is no reason for Bob to trust that she is proving the correct output.
 2. If Bob runs the program, he does not have Alice's secret preimage. If Alice discloses he secret preimage, Bob can know the value of all the bits.
 
-Therefore, we need to have Alice run the program and produce the output, bur produce it in such a way Bob will know it is the correct output. This is what zero knowledge proofs grive us.
+Therefore, we need to have Alice run the program and produce the output, bur produce it in such a way Bob will know it is the correct output. This is what zero knowledge proofs give us.
 
 Set up environment. Create two separate directories, `alice` and `bob`. You will perform the actions of Alice in the alice directory, and the actions of Bob in the `bob` directory.
 
@@ -195,4 +195,4 @@ Here are the instructions to use this program when using Truffle and Ganache. We
 
 ## Conclusion
 
-At this point you should be able to create zero knowledge proofs and verify them from the commnand line. You should also be a ble to publish a veifier to a blockchain, generate proofs, and submit them using javascript.
+At this point you should be able to create zero knowledge proofs and verify them from the command line. You should also be a ble to publish a verifier to a blockchain, generate proofs, and submit them using javascript.
