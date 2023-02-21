@@ -34,4 +34,9 @@ witness
 # other files
 get_hash
 reveal_bit
+
+# files form power of tau
 taucompute
+phase1radix2m2
+circuit
+*.params
